@@ -1,0 +1,107 @@
+body {
+  font-family: "Raleway", sans-serif;
+  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+}
+
+#emoji {
+  font-size: 78px;
+  margin-left: 25px;
+}
+#main {
+  border: 2px solid #cfd3ce;
+  margin: 20px 30px;
+  padding-top: 30px;
+  margin-top: 40px;
+  width: 18rem;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: 7px 7px 12px whitesmoke;
+}
+#today {
+  font-size: 30px;
+  text-align: left;
+  padding-left: 150px;
+}
+#current-time {
+  font-size: 15px;
+}
+#extraInfo {
+  font-size: 13px;
+  text-align: right;
+  margin-right: 15px;
+}
+#city {
+  width: 18rem;
+  border: 2px solid #cfd3ce;
+  margin: 20px 30px;
+  padding-top: 30px;
+  margin-top: 40px;
+  margin-left: 30px;
+  border-radius: 10px;
+  background: transparent;
+  box-shadow: 7px 7px 12px whitesmoke;
+}
+h1 {
+  margin-left: 30px;
+}
+h4 {
+  margin-left: 30px;
+}
+.standing {
+  color: #03506f;
+  font-size: 45px;
+  margin-left: 20px;
+  border: 0px;
+  background-color: transparent;
+}
+.standing:hover {
+  cursor: pointer;
+  color: #9ad3bc;
+}
+.card-group {
+  display: block;
+  margin-top: 40px;
+  margin-left: 150px;
+}
+.card {
+  width: 140px;
+  box-shadow: 5px 5px 10px lightblue;
+  background: transparent;
+}
+h5 {
+  font-size: 25px;
+  margin: 8px 8px;
+}
+p {
+  font-size: 15px;
+  text-align: right;
+  padding-right: 7px;
+}
+span {
+  margin-left: 30px;
+}
+#change-city {
+  border: 1px solid #cfd3ce;
+  border-radius: 50px;
+  width: 50%;
+  height: 45px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 10px lightblue;
+  background: transparent;
+}
+button.search {
+  margin: 40px auto;
+  padding: 10px;
+  border: 1px solid #cfd3ce;
+  border-radius: 35px;
+  background-color: transparent;
+  color: #03506f;
+  font-weight: bold;
+  box-shadow: 5px 5px 10px lightblue;
+  transition: all 300ms ease-in-out;
+}
+button.search:hover {
+  cursor: pointer;
+  background-color: #03506f;
+  color: lightblue;
+}

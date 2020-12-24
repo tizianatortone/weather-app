@@ -17,9 +17,9 @@ function completeDate() {
 
   let time = document.querySelector("#current-time");
   if (minutes < 10) {
-    time.innerHTML = `${currentDay} ${dayNumber}, ${hour}: 0${minutes}`;
+    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : 0${minutes}`;
   } else {
-    time.innerHTML = `${currentDay} ${dayNumber}, ${hour}: ${minutes}`;
+    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : ${minutes}`;
   }
 }
 
@@ -30,10 +30,18 @@ function showTemp(response) {
   let city = document.querySelector("#name");
   let degrees = document.querySelector("#temperature");
   let country = document.querySelector("h4");
+  let desc = document.querySelector("#description");
   let temperature = Math.round(response.data.main.temp);
+  let minTemp = document.querySelector("#min");
+  let humidity = document.querySelector("#hum");
+  let wind = document.querySelector("#speed")
   degrees.innerHTML = `${temperature}°`;
   city.innerHTML = `${response.data.name}`;
-  country.innerHTML = null;
+  country.innerHTML = `${response.data.sys.country}`;
+  desc.innerHTML = `${response.data.weather[0].description}`;
+  minTemp.innerHTML = Math.round(response.data.main.temp_min);
+  humidity.innerHTML = `${response.data.main.humidity}%`;
+  wind.innerHTML = Math.round(response.data.wind.speed);
 }
 
 function handleSubmit(event) {

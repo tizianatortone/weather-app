@@ -1,11 +1,16 @@
 body {
   font-family: "Raleway", sans-serif;
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 #emoji {
   font-size: 78px;
   margin-left: 25px;
+}
+#description {
+  margin-left: 25px;
+  text-transform: capitalize;
+  text-align: left;
 }
 #main {
   border: 2px solid #cfd3ce;
@@ -46,6 +51,12 @@ h1 {
 }
 h4 {
   margin-left: 30px;
+}
+#name {
+  text-transform: capitalize;
+}
+#country {
+  text-transform: capitalize;
 }
 .standing {
   color: #03506f;

@@ -35,6 +35,7 @@ function showTemp(response) {
   let minTemp = document.querySelector("#min");
   let humidity = document.querySelector("#hum");
   let wind = document.querySelector("#speed")
+  let iconElement = document.querySelector("#emoji");
   degrees.innerHTML = `${temperature}°`;
   city.innerHTML = `${response.data.name}`;
   country.innerHTML = `${response.data.sys.country}`;
@@ -42,6 +43,7 @@ function showTemp(response) {
   minTemp.innerHTML = Math.round(response.data.main.temp_min);
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = Math.round(response.data.wind.speed);
+  iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
 function handleSubmit(event) {

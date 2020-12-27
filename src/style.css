@@ -2,15 +2,15 @@ body {
   font-family: "Raleway", sans-serif;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
-
 #emoji {
-  font-size: 78px;
-  margin-left: 25px;
+  width: 150px;
+  margin-left: 10px;
 }
 #description {
-  margin-left: 25px;
+  margin-left: 15px;
   text-transform: capitalize;
   text-align: left;
+  font-size: 17px;
 }
 #main {
   border: 2px solid #cfd3ce;
@@ -23,12 +23,14 @@ body {
   box-shadow: 7px 7px 12px whitesmoke;
 }
 #today {
-  font-size: 30px;
+  font-size: 40px;
+  margin-left: 15px;
   text-align: left;
-  padding-left: 150px;
 }
 #current-time {
-  font-size: 15px;
+  font-size: 18px;
+  text-align: left;
+  margin-left: 10px;
 }
 #extraInfo {
   font-size: 13px;

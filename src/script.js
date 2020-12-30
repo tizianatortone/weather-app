@@ -30,13 +30,15 @@ function showTemp(response) {
   let degrees = document.querySelector("#temperature");
   let country = document.querySelector("h4");
   let desc = document.querySelector("#description");
+  
+  celsiusTemp = response.data.main.temp;
+
   let temperature = Math.round(celsiusTemp);
   let minTemp = document.querySelector("#min");
   let humidity = document.querySelector("#hum");
   let wind = document.querySelector("#speed")
   let iconElement = document.querySelector("#emoji");
 
-  celsiusTemp = response.data.main.temp;
 
   degrees.innerHTML = `${temperature}`;
   city.innerHTML = `${response.data.name}`;

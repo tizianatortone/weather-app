@@ -37,6 +37,18 @@ body {
   text-align: right;
   margin-right: 15px;
 }
+.degrees {
+  font-size: 14px;
+}
+
+#main .active {
+  color: black;
+}
+#main .active:hover {
+  color: #1e78d4;
+  text-decoration: none;
+}
+
 #city {
   width: 18rem;
   border: 2px solid #cfd3ce;

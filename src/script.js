@@ -24,19 +24,21 @@ function completeDate() {
 }
 
 completeDate();
-//It may not show the time at first but once reloading the window on the right it does.
 
 function showTemp(response) {
   let city = document.querySelector("#name");
   let degrees = document.querySelector("#temperature");
   let country = document.querySelector("h4");
   let desc = document.querySelector("#description");
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(celsiusTemp);
   let minTemp = document.querySelector("#min");
   let humidity = document.querySelector("#hum");
   let wind = document.querySelector("#speed")
   let iconElement = document.querySelector("#emoji");
-  degrees.innerHTML = `${temperature}°`;
+
+  celsiusTemp = response.data.main.temp;
+
+  degrees.innerHTML = `${temperature}`;
   city.innerHTML = `${response.data.name}`;
   country.innerHTML = `${response.data.sys.country}`;
   desc.innerHTML = `${response.data.weather[0].description}`;
@@ -75,4 +77,31 @@ function getPosition(event) {
 let locate = document.querySelector(".standing");
 locate.addEventListener("click", getPosition);
 
+function showFarenheitTemp(event) {
+  event.preventDefault();
+  let temperature = document.querySelector("#temperature");
+  celsiusLink.classList.remove("active");
+  farenheitLink.classList.add("active");
+  let farenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  temperature.innerHTML = Math.round(farenheitTemp);
+}
 
+function showCelsiusTemp(event) {
+event.preventDefault();
+let temperature = document.querySelector("#temperature");
+celsiusLink.classList.add("active");
+farenheitLink.classList.remove("active");
+temperature.innerHTML = Math.round(celsiusTemp);
+}
+
+
+let celsiusTemp = null;
+
+
+
+let farenheitLink = document.querySelector("#farenheit-link");
+farenheitLink.addEventListener ("click", showFarenheitTemp)
+
+
+let celsiusLink = document.querySelector ("#celsius-link");
+celsiusLink.addEventListener ("click", showCelsiusTemp);

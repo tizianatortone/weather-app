@@ -2,6 +2,18 @@ body {
   font-family: "Raleway", sans-serif;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
+#picture {
+  background-color: transparent;
+  width: 80%;
+  height: 80%;
+  padding: 20px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  border: 1px solid gray;
+}
 #emoji {
   width: 150px;
   margin-left: 10px;
@@ -93,9 +105,12 @@ h4 {
   box-shadow: 5px 5px 10px lightblue;
   background: transparent;
 }
-h5 {
-  font-size: 25px;
+h6 {
   margin: 8px 8px;
+}
+h6 img {
+  height: 50px;
+  width: 51px;
 }
 p {
   font-size: 15px;
@@ -130,8 +145,13 @@ button.search:hover {
   background-color: #03506f;
   color: lightblue;
 }
+
 #github {
   text-align: right;
   font-size: 11px;
-  margin-left: 30px;
+  margin-left: 750px;
+}
+form {
+  width: 500px;
+  margin-left: 20px;
 }

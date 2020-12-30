@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="card" id="picture">
         <div class="row">
             <div class="col-6">
         <div class="card" id="main" >
@@ -44,69 +45,22 @@
                 <path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
             </svg>
         </button>
+            <span>
+                <form>
+                    <input type="search" id="change-city" placeholder="        🔍 Search City...">
+                    <button class="search" type="submit" value="search"> Search </button>
+                </form>
+            </span>
         </div>
-        <div class="col-6">
-        <section class="card-group">
-        <div class="card">
-            <h5>
-                🌤 
-            </h5>
-            <p>
-                Tomorrow <br/> 
-                17ºC / 6ºC
-            </p>
+        <div class="col-6" id="forecast">
+            <section class="card-group">
+        
+            </section>
         </div>
-        <br>
-        <div class="card">
-            <h5>
-                ☀️
-            </h5>
-            <p>
-                Saturday <br />
-                16ºC / 6ºC
-            </p>
-        </div>
-        <br>
-        <div class="card">
-            <h5>
-                ☀️
-            </h5>
-            <p>
-                Sunday <br />
-                16ºC / 6ºC
-            </p>
-        </div>
-        <br>
-        <div class="card">
-            <h5>
-                ☀️
-            </h5>
-            <p>
-                Monday <br />
-                17ºC / 6ºC
-            </p>
-        </div>
-        <br>
-        <div class="card">
-            <h5>
-                ⛅️
-            </h5>
-            <p>
-                Tuesday <br />
-                17ºC / 9ºC
-            </p>
-        </div>
+ 
         <a href="https://github.com/tizianatortone/weather-app" target="_blank" id="github">GitHub Tiziana Tortone </a>
-        </section>
-        </div>
-        </div>
-        <span> 
-            <form>
-            <input type="search" id="change-city" placeholder="   🔍 Search City...">
-            <button class="search" type="submit" value="search"> Search </button>
-            </form>
-        </span>
+            <script src="src/script.js"></script>
     </div>
-    <script src="src/script.js"></script>
+</div>
 </body>
 </html>

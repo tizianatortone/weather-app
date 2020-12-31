@@ -79,11 +79,20 @@ function displayForecast(response) {
                 ${formatHours(forecast.dt * 1000)} <br/> 
                 <strong>${Math.round(forecast.main.temp_max)}ºC</strong> / ${Math.round(forecast.main.temp_min)}ºC
             </p>
-        </div> <br />
+        </div>  <br />
         </section>
         </div>`;
  
   }
+}
+
+function defaultCity(city) {
+let apiKey = "afeb02ebfbea916785c99a1a7504a564";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showTemp);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -147,3 +156,5 @@ farenheitLink.addEventListener ("click", showFarenheitTemp)
 
 let celsiusLink = document.querySelector ("#celsius-link");
 celsiusLink.addEventListener ("click", showCelsiusTemp);
+
+defaultCity("Barcelona");

@@ -1,5 +1,5 @@
-function completeDate() {
-  let now = new Date();
+function completeDate(timestamp) {
+  let now = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -12,18 +12,10 @@ function completeDate() {
 
   let currentDay = days[now.getDay()];
   let dayNumber = now.getDate();
-  let hour = now.getHours();
-  let minutes = now.getMinutes();
-
-  let time = document.querySelector("#current-time");
-  if (minutes < 10) {
-    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : 0${minutes}`;
-  } else {
-    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : ${minutes}`;
-  }
+  return `${currentDay}, ${dayNumber} | ${formatHours(timestamp)}`;
 }
 
-completeDate();
+
 
 function formatHours(timestamp) {
   let now = new Date(timestamp);
@@ -45,6 +37,7 @@ function showTemp(response) {
   celsiusTemp = response.data.main.temp;
 
   let temperature = Math.round(celsiusTemp);
+  let dateElement = document.querySelector("#current-time")
   let minTemp = document.querySelector("#min");
   let humidity = document.querySelector("#hum");
   let wind = document.querySelector("#speed")
@@ -58,6 +51,7 @@ function showTemp(response) {
   minTemp.innerHTML = Math.round(response.data.main.temp_min);
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = Math.round(response.data.wind.speed);
+  dateElement.innerHTML = completeDate(response.data.dt * 1000);
   iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 

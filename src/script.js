@@ -1,5 +1,4 @@
-function completeDate(timestamp) {
-  let now = new Date(timestamp);
+function completeDate() {
   let days = [
     "Sunday",
     "Monday",
@@ -15,7 +14,7 @@ function completeDate(timestamp) {
   return `${currentDay}, ${dayNumber} | ${formatHours(timestamp)}`;
 }
 
-
+completeDate();
 
 function formatHours(timestamp) {
   let now = new Date(timestamp);
@@ -28,6 +27,7 @@ function formatHours(timestamp) {
   }
   return `${hour}:${minutes}`;
 }
+
 function showTemp(response) {
   let city = document.querySelector("#name");
   let degrees = document.querySelector("#temperature");
@@ -35,15 +35,11 @@ function showTemp(response) {
   let desc = document.querySelector("#description");
   
   celsiusTemp = response.data.main.temp;
-
   let temperature = Math.round(celsiusTemp);
-  let dateElement = document.querySelector("#current-time")
   let minTemp = document.querySelector("#min");
   let humidity = document.querySelector("#hum");
   let wind = document.querySelector("#speed")
   let iconElement = document.querySelector("#emoji");
-
-
   degrees.innerHTML = `${temperature}`;
   city.innerHTML = `${response.data.name}`;
   country.innerHTML = `${response.data.sys.country}`;
@@ -51,7 +47,6 @@ function showTemp(response) {
   minTemp.innerHTML = Math.round(response.data.main.temp_min);
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = Math.round(response.data.wind.speed);
-  dateElement.innerHTML = completeDate(response.data.dt * 1000);
   iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 }
 
@@ -59,7 +54,6 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
-
   for (let index = 0; index < 4; index ++) {
   let forecast = response.data.list[index];
   forecastElement.innerHTML += `   
@@ -73,10 +67,10 @@ function displayForecast(response) {
                 ${formatHours(forecast.dt * 1000)} <br/> 
                 <strong>${Math.round(forecast.main.temp_max)}ºC</strong> / ${Math.round(forecast.main.temp_min)}ºC
             </p>
-        </div>  <br />
+ </div>  <br />
         </section>
         </div>`;
- 
+
   }
 }
 
@@ -96,11 +90,9 @@ function handleSubmit(event) {
   search = search.value.trim().toUpperCase();
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
-
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
-
 let changeCity = document.querySelector("form");
 changeCity.addEventListener("submit", handleSubmit);
 
@@ -112,7 +104,9 @@ function showLocation(position) {
   console.log(lon);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
-
+//this two lines that I added make everything to stop working for some reason
+   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 function getPosition(event) {
   event.preventDefault();

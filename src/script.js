@@ -1,4 +1,5 @@
 function completeDate() {
+  let now = new Date();
   let days = [
     "Sunday",
     "Monday",
@@ -8,12 +9,17 @@ function completeDate() {
     "Friday",
     "Saturday"
   ];
-
   let currentDay = days[now.getDay()];
   let dayNumber = now.getDate();
-  return `${currentDay}, ${dayNumber} | ${formatHours(timestamp)}`;
+  let hour = now.getHours();
+  let minutes = now.getMinutes();
+  let time = document.querySelector("#current-time");
+  if (minutes < 10) {
+    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : 0${minutes}`;
+  } else {
+    time.innerHTML = `${currentDay} ${dayNumber} | ${hour} : ${minutes}`;
+  }
 }
-
 completeDate();
 
 function formatHours(timestamp) {

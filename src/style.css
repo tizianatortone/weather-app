@@ -137,9 +137,8 @@ button.search {
   padding: 10px;
   border: 1px solid #cfd3ce;
   border-radius: 35px;
-  background-color: #9ad3bc;
+  background-color: transparent;
   color: #03506f;
-  font-weight: bold;
   box-shadow: 5px 5px 10px lightblue;
   transition: all 300ms ease-in-out;
   display: inline;

@@ -21,7 +21,7 @@
             <img src="" id="emoji"/> 
             <p id="today">
                 <strong id="temperature">17</strong>
-         <sup class="degrees"> <a href="#" target="_self" id="celsius-link" class="active"> ºC </a> | <a href="#" type="_self" id="farenheit-link"> ºF</a> </sup>
+         <sup class="degrees"> <a href="#" target="_self" id="celsius-link" class="active"> ºC </a> | <a href="#" target="_self" id="farenheit-link"> ºF</a> </sup>
         </p>
         <p id="current-time">
             current time
@@ -37,6 +37,7 @@
             <h1 id="name">Barcelona</h1>
             <h4 id="country">Spain</h4>
         </div>
+        <span>
         <button class="standing">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor"
                 xmlns="http://www.w3.org/2000/svg">
@@ -45,11 +46,11 @@
                 <path fill-rule="evenodd" d="M8 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
             </svg>
         </button>
-            <span>
-                <form>
-                    <input type="search" id="change-city" placeholder="        🔍 Type a city...">
-                    <button class="search" type="submit" value="search"> Search </button>
-                </form>
+        <form>
+            <input type="search" id="change-city" placeholder="        🔍 Type a city...">
+            <button class="search" type="submit" value="search"> Search </button>
+        </form>
+                 
             </span>
         </div>
         <div class="col-6" id="forecast">
@@ -57,10 +58,13 @@
         
             </section>
         </div>
- 
-        <a href="https://github.com/tizianatortone/weather-app" target="_blank" id="github">GitHub Tiziana Tortone </a>
+        
             <script src="src/script.js"></script>
     </div>
 </div>
+        <div id="github">
+            <p><a href="https://github.com/tizianatortone/weather-app" target="_blank" id="github"> Open-source Code</a>
+             by Tiziana Tortone</p>
+        </div>
 </body>
 </html>

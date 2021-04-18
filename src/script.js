@@ -22,17 +22,54 @@ function completeDate() {
 }
 completeDate();
 
-function formatHours(timestamp) {
-  let now = new Date(timestamp);
-  let hour = now.getHours();
-  if (hour < 10)
-  hour = `0${hour}`;
-  let minutes = now.getMinutes();
-  if (minutes < 10) {
-  minutes = `0${minutes}`;
-  }
-  return `${hour}:${minutes}`;
+
+
+function formatDay (timestamp){
+let date = new Date (timestamp * 1000);
+let day = date.getDay()
+let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+return days[day];
 }
+
+function displayForecast(response) {
+  let forecast = response.data.daily; 
+
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  forecast.forEach(function (forecastDay, index) {
+  if(index < 4) {
+    forecastHTML += 
+    `
+       <section class="card-group"> 
+  <div class="card">
+            <h6>
+            <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="" />
+            </h6>
+            <p>
+                ${formatDay(forecastDay.dt)} <br/> 
+                <strong>${Math.round(forecastDay.temp.max)}ºC</strong> / ${Math.round(forecastDay.temp.min)}ºC
+            </p>
+ </div>  <br />
+        </section>
+        
+        `;
+  
+  }
+});
+
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML ;
+}
+
+function getForecast (coordinates){
+  let apiKey = "afeb02ebfbea916785c99a1a7504a564";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`
+
+  axios.get(apiUrl).then(displayForecast);
+}
+
 
 function showTemp(response) {
   let city = document.querySelector("#name");
@@ -54,39 +91,17 @@ function showTemp(response) {
   humidity.innerHTML = `${response.data.main.humidity}%`;
   wind.innerHTML = Math.round(response.data.wind.speed);
   iconElement.setAttribute("src",`http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  getForecast(response.data.coord);
 }
 
-function displayForecast(response) {
-  let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = null;
-  let forecast = null;
-  for (let index = 0; index < 4; index ++) {
-  let forecast = response.data.list[index];
-  forecastElement.innerHTML += `   
-  <div class="col-6" id="forecast">
-        <section class="card-group">
-  <div class="card">
-            <h6>
-            <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="" />
-            </h6>
-            <p>
-                ${formatHours(forecast.dt * 1000)} <br/> 
-                <strong>${Math.round(forecast.main.temp_max)}ºC</strong> / ${Math.round(forecast.main.temp_min)}ºC
-            </p>
- </div>  <br />
-        </section>
-        </div>`;
 
-  }
-}
 
 function defaultCity(city) {
 let apiKey = "afeb02ebfbea916785c99a1a7504a564";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
 
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {
@@ -96,8 +111,7 @@ function handleSubmit(event) {
   search = search.value.trim().toUpperCase();
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${search}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemp);
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${search}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  
 }
 let changeCity = document.querySelector("form");
 changeCity.addEventListener("submit", handleSubmit);
@@ -110,11 +124,8 @@ function showLocation(position) {
   console.log(lon);
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(showTemp);
-
-  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
-  axios.get(apiUrl).then(displayForecast);
-
 }
+
 function getPosition(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showLocation);
